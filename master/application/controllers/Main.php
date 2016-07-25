@@ -5,9 +5,9 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
-		if(isset($this->session->isLogged === True))
+		if($this->session->isLogged == True)
 		{
-			$this->load->view('template/template.php', 'dashboard.php');
+			$this->load->view('template/default.php', 'dashboard.php');
 		}else
 		{
 			redirect('/main/login');
@@ -16,12 +16,18 @@ class Main extends CI_Controller {
 
 	public function login()
 	{
-		if(isset($this->session->isLogged === True))
+		if($this->session->isLogged === True)
 		{
 			redirect('/main');
 		}else
 		{
-			$this->load->view('')
+			$this->load->view('login_admin.php');
 		}
+	}
+
+	public function logout ()
+	{
+		session_destroy();
+		redirect('/main');
 	}
 }
