@@ -7,7 +7,7 @@ class Main extends CI_Controller {
 	{
 		if($this->session->isLogged == True)
 		{
-			$this->load->view('template/default.php', 'dashboard.php');
+			$this->load->view('template/default.php', 'dashboard/home.php');
 		}else
 		{
 			redirect('/main/login');
@@ -16,12 +16,21 @@ class Main extends CI_Controller {
 
 	public function login()
 	{
-		if($this->session->isLogged === True)
+		if($this->session->isLogged === True || !$_POST)
 		{
 			redirect('/main');
 		}else
 		{
-			$this->load->view('login_admin.php');
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+
+			$this->load->model('login_model');
+			if($passwordHashed = $this->login_model->checkUsername($username))
+			{
+				
+			}
+
+
 		}
 	}
 
