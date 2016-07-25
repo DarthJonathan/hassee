@@ -27,8 +27,8 @@ class Main extends CI_Controller {
 			$this->load->model('login_model');
 			$user = $this->login_model->checkUsername($username, $password);
 			if($user)
-			{}
-				$session_data = array (
+			{
+					$session_data = array (
 					'username' => $usernamne,
 					'id' => $user->id,
 					'isLogged' => TRUE
