@@ -27,7 +27,7 @@ class Main extends CI_Controller {
 			$this->load->model('login_model');
 			$user = $this->login_model->checkUsername($username, $password);
 			if($user)
-			{
+			{}
 				$session_data = array (
 					'username' => $usernamne,
 					'id' => $user->id,
@@ -37,7 +37,8 @@ class Main extends CI_Controller {
 
 				redirect('/main');
 			}else
-			{
+			{	
+				$this->session->set_flashdata('failed', 'Username or password error');
 				redirect('/main');
 			}
 		}
