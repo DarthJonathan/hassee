@@ -137,6 +137,11 @@
 <div id="logoBig">
 	<p align="center"><img src="images/logo/display.png" onerror="this.style.display='none'"></p>
 </div>
+		<?php if($this->session->flashdata('status')): ?>
+			<div class="alert alert-danger">
+				<?php echo $this->session->flashdata('status') ?>
+			</div>
+		<?php endif; ?>
 			<div class="login">
             <?php echo form_open('main/reset', array('id' => 'forgetForm')) ?>
             <table align="center">

@@ -57,7 +57,20 @@ class Main extends CI_Controller {
 
 	public function reset ()
 	{
-		
+		$email = $this->input->post('email');
+		$this->load->model('login_model');
+		if($user = $this->login_model->checkUser($email))
+		{
+			$this->login_model->resetPass($email);
+			$this->session->set_flashdata("status", "Success Reseting Your Password, Please Check Your Email");
+			redirect('/main');
+		}else
+		{
+			$this->session->set_flashdata("status", "No User Registed With That Email");
+			redirect('/main/forget');
+		}
+
+
 	}
 
 	public function logout ()
