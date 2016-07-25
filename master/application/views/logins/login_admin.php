@@ -134,6 +134,11 @@
 <div class="col-sm-4">
 </div>
 <div class="col-sm-4">
+	<?php if($this->session->flashdata('failed')): ?>
+		<div class="alert alert-danger">
+			<?php echo $this->session->flashdata('failed') ?>
+		</div>
+	<?php endif; ?>
 	<div id="logoBig">
 		<p align="center"><img src="images/logo/display.png" onerror="this.style.display='none'"></p>
 	</div>

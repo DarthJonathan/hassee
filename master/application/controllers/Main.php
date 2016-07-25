@@ -27,9 +27,10 @@ class Main extends CI_Controller {
 			$this->load->model('login_model');
 			if($passwordHashed = $this->login_model->checkUsername($username))
 			{
-				echo 'okay';
+				
 			}else
-			{
+			{	
+				$this->session->set_flashdata('failed', 'Username or password error');
 				redirect('/main');
 			}
 		}
