@@ -77,6 +77,18 @@
 			padding-top: 25px;
 		}
 
+		
+		.bottom-align-text {
+		    position: absolute;
+		    bottom: 0;
+		    width: 100%;
+		    font-size: 10px;
+	    }
+
+	    .sidenav a{
+	    	font-size: 18px;
+	    }
+
 
 
 	</style>
@@ -86,11 +98,13 @@
 
 	
 <div id="mySidenav" class="sidenav">
+  <div class="company_logo" style="margin-bottom: 30px; padding-left: 32px">
+  	<h2>logo</h2>
+  </div>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
   <a href="#">Clients</a>
   <a href="<?php echo base_url('/main/logout') ?>">Logout</a>
+  <div class="bottom-align-text text-center">Copyright &copy; 2016 | Hassee Developers</div>
 </div>
 
 <!-- Use any element to open the sidenav -->
