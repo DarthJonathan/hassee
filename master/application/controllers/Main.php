@@ -7,24 +7,29 @@ class Main extends CI_Controller {
 	{
 		if($this->session->userdata('isLogged') == True)
 		{
-			$this->template->load('default', 'dashboard/home');
+			redirect('main/dashboard');
 		}else
 		{
 			$this->load->view('logins/login_admin.php');
 		}
 	}
 
+	public function dashboard(){
+
+		$data['clients'] = $this->admin_model->get_all('master_clients');
+
+		$this->template->load('default', 'dashboard/home', $data);
+
+	}
+
 	public function login()
 	{
-		if($this->session->isLogged === True || !$_POST)
-		{
-			redirect('/main');
-		}else
+		
+		if($this->input->post('submit'))
 		{
 			$username = $this->input->post('username');
 			$password = hash_password($this->input->post('password'));
 
-			$this->load->model('login_model');
 			$user = $this->login_model->checkUsername($username, $password);
 			if($user)
 			{
@@ -42,6 +47,9 @@ class Main extends CI_Controller {
 				redirect('/main');
 			}
 		}
+		else{
+			redirect('main');
+		}
 	}
 
 	public function forget ()
@@ -58,7 +66,7 @@ class Main extends CI_Controller {
 	public function reset ()
 	{
 		$email = $this->input->post('email');
-		$this->load->model('login_model');
+
 		if($user = $this->login_model->checkUser($email))
 		{
 			$this->login_model->resetPass($email);

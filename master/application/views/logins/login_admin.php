@@ -27,9 +27,9 @@
     		background-attachment: fixed;
 		}
 		
-		.login
-		{
-			background:#343434;
+		.login{
+
+			background:#CCC;
 			padding-top:4em;
 			max-width:500px;
 			min-height:250px;
@@ -37,9 +37,10 @@
 			padding: 15px;
 			margin: 1% auto 0 auto;
 		}
-	
+
+		
 		#logoBig{
-			margin-top:60%;
+			margin-top:20%;
 			max-height:400px;
 			max-width:400px;	
 		}
@@ -51,13 +52,14 @@
 			.login .heading h3 {
 			  font-size: 3em;
 			  font-weight: 300;
-			  color: rgba(255, 255, 255, 0.7);
+			  color: black;
 			  display: inline-block;
+			  font-weight: bold;
 			  padding-bottom: 5px;
-			  text-shadow: 1px 1px 3px #23203b;
+			  
 			}
 			.login form .input-group {
-			  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			  border-bottom: 1px solid #AAA;
 			  border-top: 1px solid rgba(255, 255, 255, 0.1);
 			}
 			.login form .input-group:last-of-type {
@@ -70,7 +72,7 @@
 			}
 			.login form .input-group span i {
 			  font-size: 1.5em;
-			  color: rgba(255, 255, 255, 0.2);
+			  
 			}
 			.login form input.form-control {
 			  display: block;
@@ -85,7 +87,7 @@
 			  font-size: 1.6em;
 			  width: 100%;
 			  background: transparent;
-			  color: #c2b8b1;
+			  color: black;
 			}
 			.login form input.form-control:focus {
 			  border: none;
@@ -131,9 +133,8 @@
 <body>
 
 <div id="row">
-<div class="col-sm-4">
-</div>
-<div class="col-sm-4">
+<div class="col-xs-12 col-md-6"></div>
+<div class="col-xs-12 col-md-6">
 	<?php if($this->session->flashdata('failed')): ?>
 		<div class="alert alert-danger">
 			<?php echo $this->session->flashdata('failed') ?>
@@ -169,27 +170,17 @@
 	    </td>
 	    </tr>
 	    <tr>
-	    	<td><a onClick="submitForm ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Login</a></td>
+	    	<td><input type="submit" name="submit" value="Login" onClick="submitForm ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;"></td>
 		</tr>
 	   	 <tr>
-	    	<td><a onClick="forgetPassword ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Forget Password</a></td>
+	    	<td><a href="<?php echo base_url('main/forget')?>" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Forget Password</a></td>
 		</tr>
 	</table>
 	</form>
 	</div>
 </div>
-	<div class="col-sm-4">
-	</div>
+
 </div>
-<script>
-    function submitForm ()
-    {
-    	document.getElementById("loginForm").submit();
-	}
-	
-	function forgetPassword ()
-	{
-		window.location.href = "<?php echo base_url('/main/forget') ?>";
-	}
-</script>
+
 </body>
+</html>
