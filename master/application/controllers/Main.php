@@ -7,7 +7,9 @@ class Main extends CI_Controller {
 	{
 		if($this->session->isLogged == True)
 		{
-			$this->load->view('template/default.php', 'dashboard/home.php');
+		
+			$this->template->load('default', 'dashboard', $data);
+
 		}else
 		{
 			redirect('/main/login');
