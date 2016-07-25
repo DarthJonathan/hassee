@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Login Admin - Gethassee</title>
+	<title>Forget Password - Gethassee</title>
     
     <!-- Stylesheet -->
     <link href="<?php echo base_url() ?>css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -134,57 +134,41 @@
 <div class="col-sm-4">
 </div>
 <div class="col-sm-4">
-	<div id="logoBig">
-		<p align="center"><img src="images/logo/display.png" onerror="this.style.display='none'"></p>
-	</div>
-	<div class="login">
-	<?php echo form_open('main/login', array ("id" => "loginForm")) ?>
-	<table align="center">
-		<tr>
-	    	<td>
-	        	<div class="heading">
-	            	<h3>Sign In</h3>
-	            </div>
-	        </td>
-	    </tr>
-		<tr>
-	    <td>
-	    	<div class="input-group input-group-lg">
-	            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-	            <input type="text" name ="username" class="form-control" placeholder="Username">
-	        </div>
-	    </td>
-	    </tr>
-		<tr>
-	    <td>
-	    	<div class="input-group input-group-lg">
-	            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-	            <input type="password" name = "password" class="form-control" placeholder="Password">
-	        </div>
-	    </td>
-	    </tr>
-	    <tr>
-	    	<td><a onClick="submitForm ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Login</a></td>
-		</tr>
-	   	 <tr>
-	    	<td><a onClick="forgetPassword ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Forget Password</a></td>
-		</tr>
-	</table>
-	</form>
-	</div>
+<div id="logoBig">
+	<p align="center"><img src="images/logo/display.png" onerror="this.style.display='none'"></p>
 </div>
-	<div class="col-sm-4">
-	</div>
+			<div class="login">
+            <?php echo form_open('main/reset', array('id' => 'forgetForm')) ?>
+            <table align="center">
+                <tr>
+                    <td>
+                        <div class="heading">
+                            <h3>Forget Password</h3>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                <td>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="email" name ="email" class="form-control" placeholder="Email">
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                    <td><a onClick="submitReset ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Reset Password</a></td>
+                </tr>
+            </table>
+            </form>
+            </div>
+</div>
+<div class="col-sm-4">
+</div>
 </div>
 <script>
-    function submitForm ()
-    {
-    	document.getElementById("loginForm").submit();
-	}
-	
-	function forgetPassword ()
+	function submitReset ()
 	{
-		window.location.href = "<?php echo base_url('/main/forget') ?>";
+		document.getElementById("forgetForm").submit();
 	}
 </script>
 </body>

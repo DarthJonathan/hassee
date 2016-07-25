@@ -1,0 +1,57 @@
+/* Scss Document */
+/* Global */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px; }
+
+table td {
+  padding: 0.5em; }
+
+/* Index*/
+#navi {
+  padding-top: 2em; }
+  #navi ul {
+    list-style: none;
+    margin-left: 0;
+    padding: 0; }
+    #navi ul li {
+      display: inline;
+      margin-left: 1em; }
+    #navi ul a {
+      color: #000;
+      margin-bottom: 2px; }
+
+.active a {
+  border-bottom: 4px solid #2666D0; }
+
+#logo img {
+  max-width: 100%; }
+
+hr {
+  border-top: 1em;
+  border-color: #000; }
+
+#content {
+  padding: 1em; }
+
+#displayPicture img {
+  max-width: 200px; }
+
+#profile p {
+  font-size: 18px; }
+
+#footer {
+  margin-bottom: 0;
+  position: relative;
+  bottom: 0; }
+  #footer .jumbotron {
+    margin-bottom: 0; }
+
+/* Login Page */
+#login {
+  margin-top: 20%; }
+
+/* Dashboard */
+
+/*# sourceMappingURL=style.css.map */
