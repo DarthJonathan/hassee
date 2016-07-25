@@ -2,24 +2,23 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Admin Login</title>
+	<title><?php echo $page_title ?></title>
     
     <!-- Stylesheet -->
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="bootstrap-theme.min.css" type="text/css" rel="stylesheet">
-    <link href="css/flat-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>css/flat-ui.min.css" type="text/css" rel="stylesheet">
     
     <!-- Begin Scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <script src="js/flat-ui.min.js"></script>
+	<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>js/flat-ui.min.js"></script>
     
     <style>
 		@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700);
 		@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css);
 		@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 	
+		
 		body
 		{
 			background-image: url("images/login/display.jpg");
@@ -128,57 +127,69 @@
 	</style>
     
 </head>
+
 <body>
 
 <div id="row">
 <div class="col-sm-4">
 </div>
 <div class="col-sm-4">
-<div id="logoBig">
-	<p align="center"><img src="images/logo/display.png" onerror="this.style.display='none'"></p>
+	<div id="logoBig">
+		<p align="center"><img src="images/logo/display.png" onerror="this.style.display='none'"></p>
+	</div>
+	<div class="login">
+	<?php echo form_open('main/login', array ("id" => "loginForm")) ?>
+	<table align="center">
+		<tr>
+	    	<td>
+	        	<div class="heading">
+	            	<h3>Sign In</h3>
+	            </div>
+	        </td>
+	    </tr>
+		<tr>
+	    <td>
+	    	<div class="input-group input-group-lg">
+	            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+	            <input type="text" name ="username" class="form-control" placeholder="Username">
+	        </div>
+	    </td>
+	    </tr>
+		<tr>
+	    <td>
+	    	<div class="input-group input-group-lg">
+	            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+	            <input type="password" name = "password" class="form-control" placeholder="Password">
+	        </div>
+	    </td>
+	    </tr>
+	    <tr>
+	    	<td><a onClick="submitForm ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Login</a></td>
+		</tr>
+	   	 <tr>
+	    	<td><a onClick="forgetPassword ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Forget Password</a></td>
+		</tr>
+	</table>
+	</form>
+	</div>
 </div>
-<div class="login">
-<form id="loginForm" action="login.php" method="post">
-<table align="center">
-	<tr>
-    	<td>
-        	<div class="heading">
-            	<h3>Sign In</h3>
-            </div>
-        </td>
-    </tr>
-	<tr>
-    <td>
-    	<div class="input-group input-group-lg">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" name ="username" class="form-control" placeholder="Username">
-        </div>
-    </td>
-    </tr>
-	<tr>
-    <td>
-    	<div class="input-group input-group-lg">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" name = "password" class="form-control" placeholder="Password">
-        </div>
-    </td>
-    </tr>
-    <tr>
-    	<td><a onClick="submitForm ()" id="loginButton" class="btn btn-block btn-lg btn-primary float" style="display: block; margin-top:1em; width: 100%;">Login</a></td>
-	</tr>
-</table>
+	<div class="col-sm-4">
+	</div>
 </div>
-</div>
-<div class="col-sm-4">
-</div>
-</div>
-</form>
-
 <script>
     function submitForm ()
     {
     	document.getElementById("loginForm").submit();
 	}
+	
+	function forgetPassword ()
+	{
+		window.location.href = "<?php echo base_url('admin/forget') ?>";
+	}
+	
+	function submitReset ()
+	{
+		document.getElementById("forgetForm").submit();
+	}
 </script>
 </body>
-</html>
