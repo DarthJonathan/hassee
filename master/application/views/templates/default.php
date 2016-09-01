@@ -11,6 +11,8 @@
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url()?>css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url()?>css/filetree.css" type="text/css" >
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
 	<style>
@@ -95,14 +97,13 @@
 
 </head>
 <body>
-
 	
 <div id="mySidenav" class="sidenav">
   <div class="company_logo" style="margin-bottom: 30px; padding-left: 32px">
   	<h2>logo</h2>
   </div>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Clients</a>
+  <a href="<?php echo base_url('main') ?>">Clients</a>
   <a href="<?php echo base_url('/main/logout') ?>">Logout</a>
   <div class="bottom-align-text text-center">Copyright &copy; 2016 | Hassee Developers</div>
 </div>
@@ -119,13 +120,15 @@
 			</div>
 			<div class="col-xs-4"></div>
 			<div class="col-xs-4">
-				<h2 class="pull-right">LOGO</h2>
+				<img src="<?php echo base_url()?>assets/hassee-logo.png" class="pull-right img-responsive"  width="100" alt="">
 			</div>
 		</header>
-		<hr>
 
+		<div class="row">
+		<div class="col-xs-12">
 		<?php echo $body ?>
-		
+		</div>
+		</div>
 	</div>
 
 </div>
@@ -134,6 +137,7 @@
 	function openNav() {
 	    document.getElementById("mySidenav").style.width = "250px";
 	    document.getElementById("main").style.marginLeft = "250px";
+	    //document.getElementByClassName("nth-of-type(odd)").style.backgroundColor = "rgba(0,0,0,0.4)";
 	    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 	}
 

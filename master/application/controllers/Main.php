@@ -17,6 +17,8 @@ class Main extends CI_Controller {
 	public function dashboard(){
 
 		$data['clients'] = $this->admin_model->get_all('master_clients');
+		$data['title'] = 'Home';
+		
 
 		$this->template->load('default', 'dashboard/home', $data);
 
@@ -104,5 +106,86 @@ class Main extends CI_Controller {
 	{
 		$this->load->view('logins/new_form.php');
 	}
+
+	public function add_client(){
+		$data['title'] = 'Add Client';
+		$this->template->load('default', 'dashboard/add_client',$data);
+	}
+
+	public function register_client(){
+		$this->form_validation->set_rules('company_email', 'Email', 'required|valid_email|is_unique[master_clients.email]');
+		$this->form_validation->set_rules('company_password', 'Password', 'required');
+		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[company_password]');
+
+		if($this->form_validation->run() == FALSE){
+
+			redirect('main/add_client');
+
+		}else{
+
+			if($this->input->post('submit')){
+				//configuration
+				$config['upload_path']	 = './assets';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']    	 = '2000';
+				$config['max_width'] 	= '2000';
+				$config['max_height'] 	= '1500';
+
+				//initialization
+				$this->upload->initialize($config);
+
+				//upload
+				
+				if($this->upload->do_upload('company_logo')){
+
+					$logo = $this->upload->data();
+
+				}
+
+				if($this->upload->do_upload('company_background')){
+
+					$background = $this->upload->data();
+
+				}
+
+				$data_client = array(
+						'name' => $this->input->post('company_name'),
+						'person_in_charge' => $this->input->post('company_pic'),
+						'phone' => $this->input->post('company_phone'),
+						'company_admin' => $this->input->post('company_admin'),
+						'password' => hash_password($this->input->post('company_password')),
+						'url' => $this->input->post('company_url').'gethassee.com',
+						'email' => $this->input->post('company_email'),
+						'website' => $this->input->post('company_website'),
+						'color_1' => $this->input->post('company_color1'),
+						'color_2' => $this->input->post('company_color2'),
+						'registration_date' => date('Y-m-d'),
+						'background' => $background['file_name'],
+						'logo' => $logo['file_name'],
+						'plan_id' => $this->input->post('company_plan_id'),
+						'status' => 1
+
+					);
+
+				$this->admin_model->insert_data('master_clients',$data_client);
+
+				$this->session->set_flashdata('success', 'Client successfully added');
+
+				redirect('main/dashboard');
+			}
+		}
+	}
+
+	public function calc_total(){
+
+		$total = $this->input->post('subtotal');
+
+
+		echo $total;
+		
+	}
+
+
+
 
 }
